@@ -1,0 +1,46 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+*.tsbuildinfo
+
+# tsc 生成的 vite 配置中间产物
+vite.config.js
+vite.config.d.ts
+
+# Capacitor / Android 构建产物
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+*.iml
+
+# 本地构建工具链（体积大，clone 后按 README 说明放置）
+tools/
+
+# 运行时数据与敏感文件
+server/data/
+server/certs/key.pem
+*.keystore
+*.jks
+
+# 本机截图 / 预览产物
+screenshots/
+真机预览.png
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+npm-debug.log*
+
+# 编辑器
+.vscode/
+.idea/
+
+# WorkBuddy 项目内部数据（非项目源码）
+.workbuddy/

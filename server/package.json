@@ -1,0 +1,16 @@
+{
+  "name": "syncwave-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "同频 SyncWave 一起听同步服务端：房间广播播放队列/当前歌曲，共享第三方账号 token",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

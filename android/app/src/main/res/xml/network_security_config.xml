@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  网络安全配置：
+  1) 全局允许明文（酷狗音乐 CDN 直链为 http://，局域网 ws:// 调试需要）；
+  2) 全局信任内嵌自签 CA（@raw/sync_cert）。
+     Android 的 <domain> 匹配对 IP 字面量的支持不可靠，局域网用
+     wss://192.168.x.x:6666 时会回落到 base-config，因此必须在此处也信任该 CA，
+     否则 WebView 的 wss 握手会因证书不受信而失败。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="@raw/sync_cert" />
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- 公网同步入口：SakuraFrp 隧道（自签证书） -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">api.u314327.nyat.app</domain>
+        <domain includeSubdomains="true">113.219.237.106</domain>
+        <domain includeSubdomains="true">192.168.1.101</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <trust-anchors>
+            <certificates src="@raw/sync_cert" />
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+
+    <!-- 音乐 CDN 明文域名 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">kugou.com</domain>
+        <domain includeSubdomains="true">kuwo.cn</domain>
+    </domain-config>
+</network-security-config>
